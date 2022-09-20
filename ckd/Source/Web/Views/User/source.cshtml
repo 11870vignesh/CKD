@@ -1,0 +1,268 @@
+<div class="container">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+            <div class="card">
+                <div class="card-body">
+                    <div class="page-header">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">User</a></li>
+                                <li class="breadcrumb-item active text-white" aria-current="page">Create</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <h4 class="mb-2 text-center h2">User Master</h4><br>
+
+                    <form asp-action="Register" method="post" asp-controller="User" style="font-size: 0.875rem;"
+                        id="UserSignup">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">Name</label>
+                                    <div class="py-2">
+                                        <input type="text" required class="form-control" id="Name" name="Name"
+                                            placeholder="Enter name" autofocus />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">User Name</label>
+                                    <div class="py-2">
+                                        <input type="text" required class="form-control" id="Username" name="Username"
+                                            placeholder="Enter Username" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">E-Mail</label>
+                                    <div class="py-2">
+                                        <input type="email" required class="form-control" id="Email" name="Email"
+                                            placeholder="Enter email" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">Business</label>
+                                    <div class="py-2">
+
+                                        <select id="Business" class="form-control" required name="Business">
+                                            <option value="" disabled selected>Select Business</option>
+                                            @foreach (var item in Model.BusinessList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">Country</label>
+                                    <div class="py-2">
+                                        <select id="Country" class="form-control" required name="Country">
+                                            <option value="" disabled selected>Select Country</option>
+                                            @foreach (var item in Model.CountryList)
+                                            {
+                                                <option value="@item.Id">@item.CountryName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">Department</label>
+                                    <div class="py-2">
+                                        <select id="Department" class="form-control" required name="Department">
+                                            <option value="" disabled selected>Select Department</option>
+                                            @foreach (var item in Model.DepartmentList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">PhoneNumber</label>
+                                    <div class="py-2">
+                                        <input type="number" required class="form-control" id="PhoneNumber"
+                                            name="PhoneNumber" placeholder="Password" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <h4 class="mb-2 text-center h2">User Access</h4><br>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-1 sm-1"></div>
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">Change Management</label>
+                                </div>
+                                <div class="col-lg-3 sm-1">
+                                    <div class="py-2">
+                                        <select id="CMrole" class="form-control" required name="CMrole">
+                                            <option value="" disabled selected>Select Role</option>
+                                            @foreach (var item in Model.RolesList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 sm-1">
+                                    <div class="py-2">
+                                        <select id="CMaccess" class="form-control" required name="CMaccess">
+                                            <option value="" disabled selected>Select Access</option>
+                                            @foreach (var item in Model.AccessList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 sm-1"></div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-1 sm-1"></div>
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">Assembly Documents</label>
+                                </div>
+                                <div class="col-lg-3 sm-1">
+                                    <div class="py-2">
+                                        <select id="ADrole" class="form-control" required name="ADrole">
+                                            <option value="" disabled selected>Select Role</option>
+                                            @foreach (var item in Model.RolesList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 sm-1">
+                                    <div class="py-2">
+                                        <select id="ADaccess" class="form-control" required name="ADaccess">
+                                            <option value="" disabled selected>Select Access</option>
+                                            @foreach (var item in Model.AccessList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 sm-1"></div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-1 sm-1"></div>
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">QFL Documentation</label>
+                                </div>
+                                <div class="col-lg-3 sm-1">
+                                    <div class="py-2">
+                                        <select id="QFLrole" class="form-control" required name="QFLrole">
+                                            <option value="" disabled selected>Select Role</option>
+                                            @foreach (var item in Model.RolesList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 sm-1">
+                                    <div class="py-2">
+                                        <select id="QFLaccess" class="form-control" required name="QFLaccess">
+                                            <option value="" disabled selected>Select Access</option>
+                                            @foreach (var item in Model.AccessList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 sm-1"></div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-1 sm-1"></div>
+                                <div class="col-lg-4 sm-1">
+                                    <label class="col">Lot Information</label>
+                                </div>
+                                <div class="col-lg-3 sm-1">
+                                    <div class="py-2">
+                                        <select id="LOTrole" class="form-control" required name="LOTrole">
+                                            <option value="" disabled selected>Select Role</option>
+                                            @foreach (var item in Model.RolesList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 sm-1">
+                                    <div class="py-2">
+                                        <select id="LOTaccess" class="form-control" required name="LOTaccess">
+                                            <option value="" disabled selected>Select Access</option>
+                                            @foreach (var item in Model.AccessList)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 sm-1"></div>
+                            </div>
+                        </div>
+
+                        <br><br>
+
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 sm-0"></div>
+                                <div class="col-lg-4 sm-12">
+                                    <div class="col col-lg-12 sm-4 md-4 py-4">
+                                        <a href=""><button type="button" class="btn btn-dark float"
+                                                style="background-color:rgb(159, 165, 165);border:none;"></a>Cancel</button>
+                                        <button type="submit" class="btn btn-info float py-2 px-2"
+                                            style="background-color:#007788;border:none;margin-left:10px;">Create</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .error {
+        color: red;
+    }
+
+    .form-control {
+        color: black;
+        background: aliceblue;
+    }
+
+    .form-control:focus {
+        color: black;
+        background: aliceblue;
+    }
+</style>

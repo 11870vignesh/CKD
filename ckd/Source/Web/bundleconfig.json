@@ -1,0 +1,36 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "wwwroot/css/style.css",
+      "wwwroot/css/site.css",
+      "wwwroot/lib/datatables/css/dataTables.bootstrap4.min.css",
+      "wwwroot/lib/fontawesome-iconpiker/css/fontawesome-iconpicker.min.css",
+      "wwwroot/css/Business.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "wwwroot/js/vendor.bundle.base.js",
+      "wwwroot/js/misc.js",
+      "wwwroot/js/validations/UserValidation.js",
+      "wwwroot/js/off-canvas.js",
+      "wwwroot/js/site.js",
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/datatables/js/jquery.dataTables.min.js",
+      "wwwroot/lib/datatables/js/dataTables.bootstrap4.min.js",
+      "wwwroot/lib/jquery-validation/jquery.validate.min.js",
+      "wwwroot/lib/jquery-validation/additional-methods.min.js",
+      "wwwroot/js/Business.js",
+      "wwwroot/node_modules/sweetalert/dist/sweetalert.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

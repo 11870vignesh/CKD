@@ -1,0 +1,89 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>CKD Login</title>
+    @* <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" /> *@
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-scroller text-black">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="row w-100 m-0">
+                <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg" style="
+              background-image: url(../images/bharatbenz-trucks.png);
+              background-size: cover;
+              background-repeat: no-repeat;margin-left: 0px;
+            ">
+                    <div class="card col-lg-4 mx-auto" style="
+                border-radius: 25px;
+                background: #343a4069;box-shadow: 0 3px 25px #000000;
+              ">
+                        <div class="card-body px-5 py-5" style="background:#0c3f5000;border-radius: 15px;">
+                            <img src="../images/img-logo-daimler-svg.svg" width="90%;" style="padding-left: 60px" />
+                            <br /><br /><br />
+                            <!-- <form class="py-3"> -->
+                            <div class="form-group">
+
+
+                                <input type="text" class="form-control p_input" placeholder="Username or email " style="
+                      background-color: white;
+                      border: 0;
+                      border-radius: 15px;
+                    " />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control p_input" placeholder="Password " style="
+                      background-color: white;
+                      border: 0;
+                      border-radius: 15px;
+                    " />
+                            </div>
+                            <div class="form-group d-flex justify-content-between">
+                                <div class="form-check py-">
+                                </div>
+                                <a href="#" class="forgot-pass" style="color:lightblue;">Forgot password</a>
+                            </div>
+                            <div class="text-center">
+                                <a href='@Url.Action("Dashboard","Home")'>
+                                    @* <button type="submit" class="btn btn-primary btn-block enter-btn"
+                                        style="background-color: #00677f;border: none;">
+                                        Login
+                                        </button> *@
+                                    <i class="fa fa-sign-in fa-2x" aria-hidden="true"
+                                        style="border: 4px solid #ffffff00;border-radius: 15px;padding: 0px 8px;background: #f0f8ff;"></i>
+                                </a>
+                            </div>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <!-- row ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+
+    <style>
+        input {
+            background-color: white;
+            font-size: 24px;
+        }
+
+        body {
+            background-color: #00677f70;
+        }
+    </style>
+</body>
+
+</html>

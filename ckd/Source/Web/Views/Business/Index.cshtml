@@ -1,0 +1,515 @@
+@using Microsoft.AspNetCore
+@using System.Web.WebPages
+@model Models.model.BusinessModel;
+<partial name="Master" />
+
+<div class="page-header">
+              <h3 class="page-title"> Business </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Business</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Manage</li>
+                </ol>
+              </nav>
+            </div>
+
+@* <div class="col-12 grid-margin"> *@
+    <div class="card">
+        <div class="card-body" style="background-color: #fff;">
+            @using (Html.BeginForm("Index", "Business", FormMethod.Post, new { id = "businesscreateform" }))
+                {
+                    
+                    <div class="container">
+                        <div class="row">
+                            @Html.HiddenFor( model  =>  model.Id)
+                            @Html.HiddenFor( model  =>  model.CreatedBy)
+                            @Html.HiddenFor( model  =>  model.CreatedOn)
+                            @Html.HiddenFor( model  =>  model.ModifiedBy)
+                            @Html.HiddenFor( model  =>  model.ModifiedOn)
+                            @Html.HiddenFor( model  =>  model.IsActive)
+                            @Html.HiddenFor( model  =>  model.IsDelete)
+                            <div class="col-2">
+                            </div>
+                            <div class="col-2" style="text-align: right;">
+                                <span class="businessspantag">Business<span class="redcolor">*</span></span>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.Name , new { @class = "form-control" , placeholder = "Please Enter Business "})
+                                @Html.ValidationMessageFor(Model => Model.Name,"",new {@class = "text-danger"})
+                            </div>
+                            <div class="col-1">
+                                <button type="submit" id="submitbutton" class="btn submitbutton">Create</button>
+                            </div>
+                            <div class="col-1">
+                                <a href=""><input type="button" value="Cancel" class="btn btn-dark cancel-btn"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="align-items-center">
+                        @Html.ValidationMessageFor(Model => Model.IsDelete,"",new {@class = "text-danger"})
+                    </div>
+                }
+                @if (@Model.Id != null)
+                {
+                    <div id="cancelbutton" class="container">
+                        <div class="row">
+                            <div class="col-2">
+                            </div>
+                            <div class="col-2">
+                            </div>
+                            <div class="col-4 text-center">
+                                <button type=" button" onclick="EmptyId()" class="btn btn-secondary cancel">Cancel</button>
+                            </div>
+                            <div class="col-2">
+
+                            </div>
+                            <div class="col-2">
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                }
+        </div>
+        <div class="card-body" style="background-color: #fff;">
+                <h4 class="card-title">Data table</h4>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="table-responsive">
+                      <div id="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="order-listing_length"><label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="-1">All</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="order-listing_filter" class="dataTables_filter"><label><input type="search" class="form-control" placeholder="Search" aria-controls="order-listing"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="order-listing" class="table dataTable no-footer" aria-describedby="order-listing_info">
+                        <thead>
+                          <tr><th class="sorting sorting_asc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Order #: activate to sort column descending" style="width: 59.4375px;">Order #</th><th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Purchased On: activate to sort column ascending" style="width: 107.219px;">Purchased On</th><th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Customer: activate to sort column ascending" style="width: 76.9688px;">Customer</th><th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Ship to: activate to sort column ascending" style="width: 55.9062px;">Ship to</th><th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Base Price: activate to sort column ascending" style="width: 82.0156px;">Base Price</th><th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Purchased Price: activate to sort column ascending" style="width: 125.172px;">Purchased Price</th><th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 68.6719px;">Status</th><th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 61.6094px;">Actions</th></tr>
+                        </thead>
+                        <tbody>
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                        <tr class="odd">
+                            <td class="sorting_1">1</td>
+                            <td>2012/08/03</td>
+                            <td>Edinburgh</td>
+                            <td>New York</td>
+                            <td>$1500</td>
+                            <td>$3200</td>
+                            <td>
+                              <label class="badge badge-info">On hold</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="even">
+                            <td class="sorting_1">2</td>
+                            <td>2015/04/01</td>
+                            <td>Doe</td>
+                            <td>Brazil</td>
+                            <td>$4500</td>
+                            <td>$7500</td>
+                            <td>
+                              <label class="badge badge-danger">Pending</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="odd">
+                            <td class="sorting_1">3</td>
+                            <td>2010/11/21</td>
+                            <td>Sam</td>
+                            <td>Tokyo</td>
+                            <td>$2100</td>
+                            <td>$6300</td>
+                            <td>
+                              <label class="badge badge-success">Closed</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="even">
+                            <td class="sorting_1">4</td>
+                            <td>2016/01/12</td>
+                            <td>Sam</td>
+                            <td>Tokyo</td>
+                            <td>$2100</td>
+                            <td>$6300</td>
+                            <td>
+                              <label class="badge badge-success">Closed</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="odd">
+                            <td class="sorting_1">5</td>
+                            <td>2017/12/28</td>
+                            <td>Sam</td>
+                            <td>Tokyo</td>
+                            <td>$2100</td>
+                            <td>$6300</td>
+                            <td>
+                              <label class="badge badge-success">Closed</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="even">
+                            <td class="sorting_1">6</td>
+                            <td>2000/10/30</td>
+                            <td>Sam</td>
+                            <td>Tokyo</td>
+                            <td>$2100</td>
+                            <td>$6300</td>
+                            <td>
+                              <label class="badge badge-info">On-hold</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="odd">
+                            <td class="sorting_1">7</td>
+                            <td>2011/03/11</td>
+                            <td>Cris</td>
+                            <td>Tokyo</td>
+                            <td>$2100</td>
+                            <td>$6300</td>
+                            <td>
+                              <label class="badge badge-success">Closed</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="even">
+                            <td class="sorting_1">8</td>
+                            <td>2015/06/25</td>
+                            <td>Tim</td>
+                            <td>Italy</td>
+                            <td>$6300</td>
+                            <td>$2100</td>
+                            <td>
+                              <label class="badge badge-info">On-hold</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="odd">
+                            <td class="sorting_1">9</td>
+                            <td>2016/11/12</td>
+                            <td>John</td>
+                            <td>Tokyo</td>
+                            <td>$2100</td>
+                            <td>$6300</td>
+                            <td>
+                              <label class="badge badge-success">Closed</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr><tr class="even">
+                            <td class="sorting_1">10</td>
+                            <td>2003/12/26</td>
+                            <td>Tom</td>
+                            <td>Germany</td>
+                            <td>$1100</td>
+                            <td>$2300</td>
+                            <td>
+                              <label class="badge badge-danger">Pending</label>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary">View</button>
+                            </td>
+                          </tr></tbody>
+                      </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="order-listing_previous"><a href="#" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="order-listing" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="order-listing_next"><a href="#" aria-controls="order-listing" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    </div>
+@* </div> *@
+
+<div class="card">
+              
+            </div>
+
+
+
+@* <div class="container">
+    <div class="maindiv custom-centered">
+        @using (Html.BeginForm("Index", "Business", FormMethod.Post, new { id = "businesscreateform" }))
+        {
+            <div class="textcenter">
+                <h5 class="color headingsize">Business Master</h5>
+            </div>
+            <br>
+            <div class="container">
+                <div class="row">
+                    @Html.HiddenFor( model  =>  model.Id)
+                    @Html.HiddenFor( model  =>  model.CreatedBy)
+                    @Html.HiddenFor( model  =>  model.CreatedOn)
+                    @Html.HiddenFor( model  =>  model.ModifiedBy)
+                    @Html.HiddenFor( model  =>  model.ModifiedOn)
+                    @Html.HiddenFor( model  =>  model.IsActive)
+                    @Html.HiddenFor( model  =>  model.IsDelete)
+                    <div class="col-2">
+                    </div>
+                    <div class="col-2" style="text-align: right;">
+                        <span class="businessspantag">Business<span class="redcolor">*</span></span>
+                    </div>
+                    <div class="col-4 form-group">
+                        @Html.TextBoxFor(model => model.Name , new { @class = "form-control" , placeholder = "please enter business "})
+                        @Html.ValidationMessageFor(Model => Model.Name,"",new {@class = "text-danger"})
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" id="submitbutton" class="btn submitbutton">Submit</button>
+                    </div>
+                    <div class="col-2">
+                    </div>
+                </div>
+            </div>
+            <div class="align-items-center">
+                @Html.ValidationMessageFor(Model => Model.IsDelete,"",new {@class = "text-danger"})
+            </div>
+        }
+        @if (@Model.Id != null)
+        {
+            <div id="cancelbutton" class="container">
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-2">
+                    </div>
+                    <div class="col-4 text-center">
+                        <button type=" button" onclick="EmptyId()" class="btn btn-secondary cancel">Cancel</button>
+                    </div>
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-2">
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        }
+        <br>
+        <br>
+        
+    </div>
+</div> *@
+<div class="datatable paddingbottom">
+            <table id="BusinessDatatable" class="table table-bordered dt-responsive nowrap whitecolor" width="100%"
+                cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="text-center firstcolumn" style="">
+                            CreatedOn
+                        </th>
+                        <th class="text-center background tablehead ClearheadExRightborder rightborder" style="">
+                            Business
+                        </th>
+                        <th class="text-center background tablehead ">Actions
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="backgroundbase displaynone" style=""></td>
+                        <td class="backgroundcolor ClearheadExRightborder" id="backgroundcolor">
+                            <input type="text" onkeyup="CustomFilterFunction()" class="form-control textboxfilter"
+                                id="businessinputfilter" name="businessinputfilter">
+                        </td>
+                        @* <td class="background" style="background-color: #216477;"></td> *@
+                        <td class="backgroundbase"></td>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+<form action='@Url.Action("DeleteBusiness","Business")' id="DeleteForm" method="post">
+    <div class="modal" id="BusinessDelete" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tablehead">
+                    <h5 style="text-align: right;" class="modal-title" id="staticBackdropLabel">
+                        Delete Business
+                    </h5>
+                    <button type="button" onclick="EmptyFlag()" class="close closebutton" data-dismiss="modal">
+                        &times;</button>
+                </div>
+                <div class="modal-body" id="modelBody">
+                    <div class="row ">
+                        <input type="hidden" id="flag" name="flag">
+                        <input type="hidden" id="delete_modal_id" name="Id">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <h5>want to delete the Business?</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <!-- text input -->
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success modaldeletebutton">yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    
+<script src="~/js/Business.js"></script>
+<script>
+    $(document).ready(function () {
+  loadGrid();
+  $(".dataTables_length").addClass("bs-select");
+  $("#BusinessDelete").hide();
+});
+function loadGrid() {
+        $("#BusinessDatatable").DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": true,
+            "orderCellsTop": true,
+            "ajax": {
+            "url": "/Business/BusinessData",
+            "type": "POST",
+            "datatype": 'json',
+            //deferLoading: 57,
+            "dataSrc": function (json) {
+                if (json.data == null) {
+                    return [];
+                }
+                return json.data;
+            },
+
+        },
+            "language": {
+            "emptyTable": "No data available in table", // 
+            "loadingRecords": "Please wait .. ", // default Loading...
+            "zeroRecords": "No matching records found",
+            "processing": '<i class="fa fa-spinner fa-spin datatablespinner"></i>'
+        },
+            "columns": [
+            {
+                "data": "createdOn", "name": "CreatedOn", "autoWidth": true,
+                "render": function (data) {
+                    if (data != null) {
+                        var date = new Date(data);
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "/" + (month.toString().length > 1 ? month : "0" + month) + "/" + date.getFullYear();
+                    }
+                    else {
+                        return ("");
+                    }
+
+                }
+            },
+            { "data": "name", "name": "Business", "autoWidth": true },
+            {
+                "mRender": function (data, type, full) {
+                    return '<a href="@Url.Action("GetById","Business")?Id=' + full.id + '" ><i  class="fa fa-pencil-square iconbasecolor"></i ></a>' + '<a ><i  class="fa fa-trash" onclick="Delete(' + full.id + ')" style="font-size:20px;color:#CC0033 ;padding-left:30px;"></i></a>'
+                }
+            },
+        ],
+            'columnDefs': [
+            { 'className': "textalign", "targets": [2] },
+            {
+                'targets': [2], // column index (start from 0)
+                'orderable': false,
+                // set orderable false for selected columns
+            },
+            {
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }
+        ]
+
+        });
+    }
+    function CustomFilterFunction() {
+        dataTable = $('#BusinessDatatable').DataTable();
+
+        dataTable.columns(0).search($('#businessinputfilter').val());
+        dataTable.columns(1).search($('#businesscreatedonfilter').val());
+        dataTable.draw();
+    }
+</script>
+<script>
+    @* if(@Model.StatusCode == 200)
+    {
+    swal({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success",
+    });
+    }
+    if(@Model.StatusCode == 500)
+    {
+        swal({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "error",
+        });
+    }
+    if(@Model.StatusCode == 400)
+    {
+        swal({
+        title: "Validation Failure",
+        text: @Model.UserMessage,
+        icon: "error",
+    } *@
+    if(@Model.StatusCode == 500)
+    {
+        failurealert();
+    };
+    if(@Model.StatusCode == 200)
+    {
+        successalert();
+    };
+    @* if(@Model.StatusCode == 400)
+    {
+        validatealert();
+    }; *@
+    @* function validatealert()
+    {
+    swal({
+        title: "Input Error!",
+        text: '" '+@Model.UserMessage+'"',
+        icon: "error",
+    });
+    } *@
+    function failurealert()
+    {
+    swal({
+        title: "Input Error!",
+        text: "Something Went Wrong",
+        icon: "error",
+    });
+    }
+    function successalert()
+    {
+    swal({
+        title: "Saved Successfully!",
+        text: "Data saved succesfully!",
+        icon: "success",
+    });
+    }
+</script>
+
+}
+

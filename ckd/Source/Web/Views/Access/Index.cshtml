@@ -1,0 +1,168 @@
+@model Models.model.AccessModel;
+
+<head>
+    <style>
+        .selectbackground {
+            background-color: #216477;
+        }
+        .width{
+            width: 210px !important;
+        }
+        .tablewidth{
+            width: 100% !important;
+        }
+        .centermodal {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+    </style>
+
+</head>
+<partial name="Master" />
+
+<div class="page-header">
+              <h3 class="page-title"> Access </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Manage</li>
+                </ol>
+              </nav>
+            </div>
+<div class="card">
+        <div class="card-body" style="background-color: #fff;">
+
+                   
+@using (Html.BeginForm("Index", "Access", FormMethod.Post, new { id = "AccessForm", style = "font-size: 0.875rem;" , @class  ="px-5" }))
+{
+
+
+  @Html.HiddenFor( model => model.Id , new{ @id ="Id"})
+  @Html.HiddenFor( model => model.CreatedOn , new{ @id ="CreatedOn"})
+  @Html.HiddenFor( model => model.ModifiedOn , new{ @id ="ModifiedOn"})
+
+  <div class="row">
+    <div class="col-lg-3 sm-1"></div>
+    <div class="col-lg-4 sm-1">
+
+      <label class="col  col-form-label"> Access Name</label>
+
+      <div class="py-2">
+        @Html.TextBoxFor(m => m.Name , new { @class = "form-control" , placeholder = "Enter Name " , @id ="Name"})
+
+        @Html.ValidationMessageFor(Model => Model.Name,"",new {@class =
+      "text-danger"})
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-lg-3 sm-1"></div>
+    <div class="col-lg-4 sm-1">
+
+      <label class="col col-form-label">Description</label>
+
+      <div class="py-2">
+        @Html.TextBoxFor(model => model.Description , new { @class = "form-control" , placeholder = "Enter Description " ,
+      @id = "Description",
+      @Value = @Model.Description})
+        @Html.ValidationMessageFor(Model => Model.Description,"",new {@class =
+      "text-danger"})
+      </div>
+    </div>
+  </div>
+
+
+    }
+    <div class="row">
+    <div class="col-lg-3 sm-1"></div>
+    <div class="col-lg-1 sm-1">
+
+
+      <div class="py-2">
+        <input  type="button"  value = "Cancel"  onclick="ClearValues()"  class="btn btn-dark float cancel-btn" >
+      </div>
+
+    </div>
+    <div class="col-lg-1">
+
+
+      <div class="py-2">
+        <input type="submit" class="btn btn-info float submit-btn " form="AccessForm" value="Create" id= "submitButton"
+        >
+      </div>
+
+    </div>
+    
+  </div>
+           
+        </div>
+        <div class="card-body" style="background-color: #fff;">
+
+            <div class="datatable tablewidth">
+               
+                <table id="AccessDataTable" class="table  dt-responsive nowrap whitecolor" width="100%"
+                    cellspacing="0">
+                   <thead>
+                        <tr>
+                            <th class="text-center firstcolumn" style="display:none;">Created On</th>
+                            <th class="text-center background" style="background-color: #343a40;color:white">Access
+                            </th>
+                            <th class="text-center background" style="background-color: #343a40;color:white"> Action</th>
+                            
+                           
+                            
+                        </tr>
+                        <tr>
+                            <td class="background displaynone" style="display:none;"></td>
+                           <td class="backgroundcolor" id="backgroundcolor">
+                                <input type="text" onkeyup="CustomFilterFunction()" class="form-control textboxfilter width"
+                                    id="businessinputfilter" name="businessinputfilter">
+                            </td>
+                            @* <td class="background" style="background-color: #343a40;"></td> *@
+                            <td class="background" style="background-color: #343a40;"></td>
+
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="toasteralert">
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+            <div class="toast-container position-absolute top-0 end-0 p-3">
+                <div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive"
+                    aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Hello, world! This is a toast message.
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+ @section Scripts
+{
+
+<script src="~/js/ServerSideDataTable/AccessDataTable.js"></script>
+
+<script>
+ if (@Model.StatusCode == 200) {
+      Swal.fire("Success", " <h4  style = 'color : #0c3f50; ' >Saved Successfully  .... </h4>", "success");
+
+      }
+      
+    
+
+</script>
+
+
+}

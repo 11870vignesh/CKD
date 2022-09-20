@@ -1,0 +1,474 @@
+@model Models.model.CountryModel;
+
+<head>
+    <style>
+        .selectbackground {
+            background-color: #216477;
+        }
+    </style>
+
+</head>
+
+
+    <div class="container">
+        <div class="maindiv">
+            <form action='@Url.Action("Index","Country")' class="custom-centered" id="countrycreateform"
+                name="countrycreateform" method="post">
+                <div style="text-align: center;">
+                    <h5 class="color">Country Master</h5>
+                </div>
+                <br>
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="form-group col-3">
+                            <input type="hidden" id="modal_id" name="Id" value="@Model.Id">
+                            <input type="hidden" id="modal_businessmappingId" name="BusinessMappingId" value="@Model.BusinessMappingId">
+                            <label for="BusinessId" class="required color" >Business <span
+                                    style="color: red;">
+                                    *</span></label>
+                            <select  id="BusinessId" name="BusinessId" class="form-control dropdownheight">
+                                <option value="" selected="selected">Please Select Any Business</option>
+                                @foreach (var business in @Model.BusinessList)
+                                {
+                                    if (@Model.BusinessId == business.Id)
+                                    {
+                                        <option value="@business.Id" selected>@business.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@business.Id">@business.Name</option>
+                                    }
+
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(Model => Model.BusinessId,"",new {@class ="text-danger"})
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="CountryName" class="required color" >Country Name</label>
+                            <input type="text" id="CountryName" name="CountryName"
+                                value="@Model.CountryName" class="form-control" placeholder="">
+                            @Html.ValidationMessageFor(Model => Model.CountryName,"",new {@class =
+                            "text-danger"})
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group col-3">
+                            <label for="CountryCode" class="required color" >Country Code</label>
+                            <input type="text" id="CountryCode" value="@Model.CountryCode" name="CountryCode"
+                                class="form-control" placeholder="">
+                            @Html.ValidationMessageFor(Model => Model.CountryCode,"",new {@class =
+                            "text-danger"})
+                        </div>
+
+                        <!-- text input -->
+                        
+
+
+                        <!-- text input -->
+                        <br>
+                        <div class="form-group col-1" style="text-align: center;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-2">
+                        </div>
+                         <div class="col-2">
+                            
+                        </div>
+                        <div class="col-1 ">
+                            <button type="submit" class="btn btn-success"
+                                style="color: white;border-color:#007A93;background-color:#007A93">Submit</button>
+                        </div>
+
+                        <div class="col-1 ">
+                            
+                        </div>
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-2">
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            @if (@Model.Id != null)
+            {
+                <div id="cancelbutton" class="container">
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-2">
+                        </div>
+                        <div class="col-2">
+                        </div>
+                        <div class="col-1 text-center">
+                            @* <a href='@Url.Action("Index", "Business")'>
+
+                                </a> *@
+                            <button type=" button" onclick="EmptyId()" class="btn btn-secondary cancel">Cancel</button>
+                        </div>
+                        <div class="col-1">
+                        </div>
+                        <div class="col-2">
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+                </div>
+            }
+            <br>
+            <div class="datatable">
+                @* <div class="textalignright">
+                    <a href='@Url.Action("Create", "Business")'>
+                    <button type=" button" id="createbutton" class="btn submitbutton noHover">Create New
+                    Business</button>
+                    </a>
+                    </div> *@
+                <table id="CountryDatatable" class="table table-bordered dt-responsive nowrap whitecolor" width="100%"
+                    cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center firstcolumn" style="">
+                                CreatedOn
+                            </th>
+                            <th class="text-center background" style="background-color: #216477;color:white">Business
+                            </th>
+                            <th class="text-center background" style="background-color: #216477;color:white">Country
+                            </th>
+                            <th class="text-center background" style="background-color: #216477;color:white">Country
+                                Code
+                            </th>
+                            <th class="text-center background" style="background-color: #216477;color:white">Actions
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="background" style="background-color: #216477;display:none;"></td>
+                           <td class="backgroundcolor" id="backgroundcolor">
+                                <input type="text" onkeyup="CustomFilterFunction()" class="form-control textboxfilter"
+                                    id="businessinputfilter" name="businessinputfilter">
+                            </td>
+                            <td class="backgroundcolor" id="backgroundcolor">
+                                <input type="text" onkeyup="CustomFilterFunction()" class="form-control textboxfilter"
+                                    id="countryinputfilter" name="countryinputfilter">
+                            </td>
+                            <td class="backgroundcolor" id="backgroundcolor">
+                                <input type="text" onkeyup="CustomFilterFunction()" class="form-control textboxfilter"
+                                    id="countrycodeinputfilter" name="countrycodeinputfilter">
+                            </td>
+                            @* <td class="background" style="background-color: #216477;"></td> *@
+                            <td class="background" style="background-color: #216477;"></td>
+
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="toasteralert">
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+            <div class="toast-container position-absolute top-0 end-0 p-3">
+                <div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive"
+                    aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Hello, world! This is a toast message.
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@section Scripts
+{
+@* "data": JSON.stringify($('#BusinessDatatable').DataTable().rows().data().toArray()), *@
+<script>
+    $(document).ready(function () {
+        loadGrid();
+        $('#CountryDelete').hide();
+    });
+    function loadGrid() {
+        $("#CountryDatatable").DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": true,
+            "orderCellsTop": true,
+            "pagingType": "full_numbers",
+            "ajax": {
+                "url": "/Country/CountryData",
+                "type": "POST",
+                "datatype": 'json',
+                //deferLoading: 57,
+                "dataSrc": function (json) {
+                    if (json.data == null) {
+                        return [];
+                    }
+                    return json.data;
+                },
+
+            },
+            "language": {
+                "emptyTable": "No data available in table", // 
+                "loadingRecords": "Please wait .. ", // default Loading...
+                "zeroRecords": "No matching records found",
+                "processing": '<i class="fa fa-spinner fa-spin" style="font-size:24px;color:#216477;"></i>'
+            },
+            "columns": [
+                {
+                    "data": "createdOn", "name": "CreatedOn", "autoWidth": true,
+                    "render": function (data) {
+                        if (data != null) {
+                            var date = new Date(data);
+                            var month = date.getMonth() + 1;
+                            return date.getDate() + "/" + (month.toString().length > 1 ? month : "0" + month) + "/" + date.getFullYear();
+                        }
+                        else {
+                            return ("");
+                        }
+
+                    }
+                },
+                { "data": "businessName", "name": "Business", "autoWidth": true },
+                { "data": "countryName", "name": "Country", "autoWidth": true },
+                { "data": "countryCode", "name": "Code", "autoWidth": true },
+                {
+                    "mRender": function (data, type, full) {
+                        return '<a href="@Url.Action("GetById","Country")?BusinessMappingId=' + full.id + '" ><i  class="fa fa-pencil-square" style="font-size:20px;color:#216477;"></i ></a>' + '<i  class="fa fa-trash" style="font-size:20px;color:#CC0033 ;padding-left:30px;" onclick=Delete("' + full.id + '");></i>'
+                    }
+                },
+            ],
+            'columnDefs': [
+                {
+                    'targets': [4], // column index (start from 0)
+                    'orderable': false,
+                    // set orderable false for selected columns
+                },
+                {
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }
+            ]
+
+        });
+    }
+    function CustomFilterFunction() {
+        dataTable = $('#CountryDatatable').DataTable();
+
+        dataTable.columns(1).search($('#businessinputfilter').val());
+        dataTable.columns(2).search($('#countryinputfilter').val());
+        dataTable.columns(3).search($('#countrycodeinputfilter').val());
+        dataTable.draw();
+    }
+    function EmptyId() {
+        $("#modal_id").val('');
+        $("#Name").val('');
+        $("#cancelbutton").hide();
+        window.location.href = "../Country/Index";
+    }
+    $('#countrycreateform').validate({
+        rules: {
+            BusinessId: {
+                required: true,
+            },
+            CountryCode: {
+                required: true,
+                maxlength: 3,
+                minlength: 2
+            },
+            CountryName: {
+                required: true,
+                maxlength: 50,
+                minlength: 3
+            },
+        },
+        messages: {
+            BusinessId: {
+                required: "Please Choose Business",
+            },
+            CountryCode: {
+                required: "Please enter Country Code",
+                maxlength: "please enter below 3 characters",
+                minlength: "please enter above 2 characters"
+            },
+            CountryName: {
+                required: "Please enter Country Name",
+                maxlength: "please enter below 50 characters",
+                minlength: "please enter above 3 characters"
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+</script>
+}
+<script>
+    if (@Model.StatusCode == 200) {
+        $('#toasteralert').hide();
+        swal({
+            title: "Success!",
+            text: "Data saved Successfully!",
+            icon: "success",
+            button: "ok",
+        }).then(function () {
+    @ViewData.Clear;
+        });
+    }
+    else if (@Model.StatusCode == 500) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            button: "ok",
+        })
+    }
+</script>
+<script type="text/javascript">
+    function Delete(value) {
+        $("#delete_modal_id").val(value);
+        $('#CountryDelete').show();
+    }
+    function EmptyFlag() {
+
+        $('#BusinessDelete').hide();
+    }
+    @* href="@Url.Action("GetBusiness","Business")?Id=' + full.id + '" *@
+</script>
+<form action='@Url.Action("DeleteCountry","Country")' id="DeleteForm" method="post">
+    @* <div class="modal show" id="BusinessDelete" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+        </div>
+        </div>
+        </div> *@
+    <div class="modal" id="CountryDelete" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #216477;color:white">
+                    <h5 style="text-align: right;" class="modal-title" id="staticBackdropLabel">
+                        Delete Country
+                    </h5>
+                    <button type="button" onclick="EmptyFlag()" class="close" data-dismiss="modal">
+                        &times;</button>
+                </div>
+                <div class="modal-body" id="modelBody">
+                    <div class="row">
+                        <input type="hidden" id="flag" name="flag">
+                        <input type="hidden" id="delete_modal_id" name="BusinessMappingId">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <h5>want to delete the Country?</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <!-- text input -->
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success modaldeletebutton">yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+
+        function Edit(value) {
+            //var data = value.serialize();
+            //console.log(data);
+            //alert(data);
+            $.ajax({
+                type: 'POST',
+                url: '/Business/GetById',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+                data: { 'Id': value },
+                success: function (result) {
+                    //alert('Successfully received Data ');
+                    //console.log(result);
+                    $("#Name").val(result.name);
+                    $("#modal_id").val(result.id);
+                    $('html, body').animate({ scrollTop: 0 }, 'fast');
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+        }
+</script>
+<form action='@Url.Action("Insert","Business")' id="loginform" method="post">
+    <div class="modal fade" id="BusinessUpdate" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #216477;color:white;">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Update Business
+                    </h5>
+                </div>
+                <div class="modal-body" id="modelBody">
+                    <div class="row">
+                        <input type="hidden" id="modal_id" name="id">
+                        <div class="col-sm-2">
+                            <!-- text input -->
+                        </div>
+                        <div class="col-sm-4">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label for="business_name" class="required">Name</label>
+                                <input type="text" id="modal_business_name" name="Name" class="form-control"
+                                    placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <!-- text input -->
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success modaldeletebutton">Update</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <!-- text input -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    if (@Model.StatusCode == 200) {
+        $("#myToast").toast("show");
+    }
+</script>

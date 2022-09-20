@@ -1,0 +1,172 @@
+<nav class="navbar p-0 fixed-top d-flex flex-row" id="navbar">
+    <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../images/logo-mini.svg" alt="CKD" /></a>
+    </div>
+
+    <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch" style="height: 55px;">
+
+        <!-- Toggle Button -->
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize"
+            id="nav-toggler" style="padding-top: 0px;padding-bottom: 0px;height: 55px;padding-left: 5px;">
+            <span class="mdi mdi-menu"></span>
+        </button>
+
+
+        <ul class="navbar-nav w-100">
+            <li class="nav-item w-100">
+                <!-- Title -->
+                <form class="d-flex justify-content-center" id="nav-title" style="text-align:center;">
+                    <h4 style="font-weight: 500;" class="ckd-title"> CKD Connect 3.0</h4>
+                </form>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+
+            <!-- Contact part starts -->
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa-solid fa-address-book block-UI" onclick="blurFunction()" id=""></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" style="width:200px;"
+                    aria-labelledby="messageDropdown">
+                    <p class="text-center h4 dropicon">Contact Details</p>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-item-content">
+                            <p class="ellipsis notification">
+                                Contact Person
+                            </p>
+                            <p class="time">Admin</p>
+                        </div>
+                    </a>
+                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-item-content">
+                            <p class="ellipsis notification">
+                                Contact Number
+                            </p>
+                            <p class="time">+910011223344</p>
+                        </div>
+                    </a>
+                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-item-content">
+                            <p class="ellipsis notification">
+                                Contact EmailId
+                            </p>
+                            <p class="time">Admin@daimlertruckckd.com</p>
+                        </div>
+                    </a>
+                     <div class="dropdown-divider"></div>
+                    
+                </div>
+            </li>
+
+            <!-- Notifications Starts-------------------------------------->
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                    data-toggle="dropdown">
+                    <i class="mdi mdi-bell block-UI" onclick="blurFunction()"></i>
+                    <span class="count bg-danger block-UI" onclick="blurFunction()"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                    aria-labelledby="notificationDropdown" style="width: 250px;height: 350px;">
+                    <p class="text-center h4 dropicon">Notifications</p>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-item-content">
+                            <p class="ellipsis notification">TR Created</p>
+                            <p class="time">1 min ago</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-item-content">
+                            <p class="ellipsis notification">BIN Updated</p>
+                            <p class="time">10 min ago</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-item-content">
+                            <p class="ellipsis notification">
+                                Assembly Documents uploaded
+                            </p>
+                            <p class="time">1 hr ago</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-item-content">
+                            <p class="ellipsis notification">
+                                Server Maintenance !! Tuesday, August 20th, 2022 from
+                                9:30 AM to 12:30 PM
+                            </p>
+                            <p class="time">5 hr ago</p>
+                        </div>
+                    </a>
+                    
+                    <p class="text-center dropicon py-2">See all notifications</p>
+                </div>
+            </li>
+
+            <!-- Profile part starts -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                    <div class="navbar-profile">
+                        <i class="mdi mdi-account text-white block-UI" onclick="blurFunction()" id="account"></i>
+                        <p class="mb-0 d-none d-sm-block navbar-profile-name block-UI" onclick="blurFunction()">
+                            Henry Klein
+                        </p>
+                        <i class="mdi mdi-menu-down d-none d-sm-block block-UI" onclick="blurFunction()"></i>
+                    </div>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list profile"
+                    aria-labelledby="profileDropdown" style=" width: 200px;height: 50px;filter: blur(0px);">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item profile">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-account"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1" style="color:#343a40;">My Profile</p>
+                        </div>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item profile">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1" style="color:#343a40;">Change password</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item profile">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-logout"></i>
+                            </div>
+                        </div>
+                        <a href='@Url.Action("Login","User")' style="text-decoration: none;">
+                            <div class="preview-item-content">
+                                <p class="preview-subject mb-1"
+                                    style="position: relative;top: -40px;left: 71px;color:#343a40;">Log
+                                    out</p>
+                            </div>
+                        </a>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-format-line-spacing"></span>
+        </button>
+    </div>
+</nav>

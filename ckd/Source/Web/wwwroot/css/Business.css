@@ -1,0 +1,194 @@
+.businessspantag {
+    color: #216477;
+    font-size: x-large;
+}
+
+.backgroundcolor {
+    background-color: #216477;
+}
+
+.submitbutton {
+    background-color: #216477;
+    color: white
+}
+
+.modaldeletebutton {
+    color: white;
+    border-color: #216477;
+    background-color: #216477
+}
+
+.background {
+    background-color: #216477;
+    color: white;
+}
+.modal-body{
+    background: white !important;
+    color: #216477 !important;
+}
+
+
+#backgroundcolor {
+    background-color: #216477;
+}
+
+.datatable {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.textalignright {
+    text-align: right;
+}
+
+.whitecolor {
+    color: white;
+}
+
+#BusinessDatatable_info {
+    color: #216477;
+}
+
+#createbutton :hover {
+    color: white;
+    background-color: #216477;
+}
+
+.firstcolumn {
+    background-color: #216477;
+    color: white;
+    display: none;
+}
+
+.toast {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.toast-header {
+    background-color: #34aed1;
+    color: white;
+}
+
+
+
+.modaldeletebutton {
+    color: white;
+    border-color: #216477;
+    background-color: #216477
+}
+
+.background {
+    background-color: #216477;
+}
+
+.dataTables_filter {
+    display: none;
+}
+
+.custom-centered {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.maindiv {
+
+    border-radius: 5px;
+
+}
+
+.color {
+    color: #216477 !important;
+}
+
+.backgroundbase {
+    background-color: #216477 !important;
+    border: 0px !important;
+}
+
+.textcenter {
+    text-align: center !important;
+}
+
+.redcolor {
+    color: red !important;
+}
+
+.tablehead {
+    background-color: #216477 !important;
+    color: white !important;
+}
+
+.displaynone {
+    display: none !important;
+}
+
+.datatablespinner {
+    font-size: 24px !important;
+    color: white!important;
+}
+
+.noHover {
+    pointer-events: none !important;
+}
+
+.dataTables_filter {
+    display: none;
+}
+
+.noHover {
+    pointer-events: none;
+}
+
+#BusinessDatatable_length label select {
+    color: black;
+    background-color: white;
+}
+
+#BusinessDatatable_length label {
+    color: #216477;
+}
+
+.businessspantag {
+    color: #216477;
+    font-size: 20px;
+}
+
+.submitbutton {
+    background-color: #216477 !important;
+    color: white !important;
+    height: 35px !important;
+}
+.textalign{
+    text-align: center !important;
+}
+
+.iconbasecolor {
+    font-size: 20px;
+    color: #216477;
+}
+
+tbody {
+    color: #216477 !important;
+}
+
+.headingsize {
+    font-size: 25px;
+}
+
+#submitbutton :hover {
+    background-color: #216477 !important;
+    color: white !important;
+    height: 35px;
+}
+
+.paddingbottom {
+    padding-bottom: 25px;
+}
+.ClearheadExRightborder{
+    border-bottom: 0px solid !important;
+    border-top: 0px solid !important;
+    border-left: 0px solid !important;
+    border-left: 1px solid #8b93a7 !important;
+}

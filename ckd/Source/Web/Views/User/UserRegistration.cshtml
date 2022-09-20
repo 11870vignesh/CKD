@@ -1,0 +1,123 @@
+<partial name="Master" />
+
+<div class="page-header">
+              <h3 class="page-title"> Users </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">User</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Create</li>
+                </ol>
+              </nav>
+            </div>
+@* <div class="px-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item breadcrumb-heading"><a href="#">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create</li>
+        </ol>
+    </nav>
+</div> *@
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body" style="background-color: #fff;">
+                <h4 class="card-title">Create User</h4>
+                <form asp-action="Register" class="form-sample" method="post" asp-controller="User" id="UserSignup">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" required class="form-control" id="Name" name="Name"
+                                        placeholder="Enter Name" autofocus />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">User Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" required class="form-control" id="Username" name="Username"
+                                        placeholder="Enter User Name" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">E-Mail</label>
+                                <div class="col-sm-9">
+                                    <input type="email" required class="form-control" id="Email" name="Email"
+                                        placeholder="Enter E-Mail" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Phone Number</label>
+                                <div class="col-sm-9">
+                                    <input type="number" required class="form-control" id="PhoneNumber" name="PhoneNumber"
+                                        placeholder="Enter Phone Number" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Business</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control">
+                                        <option value="" disabled selected>Select Business</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Country</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control">
+                                        <option value="" disabled selected>Select Country</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Department</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control">
+                                        <option value="" disabled selected>Select Department</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-8 sm-0"></div>
+                        <div class="col-lg-4 sm-12">
+                            <div class="col col-lg-12 sm-4 md-4 py-4">
+                                <a href=""><input type="button" value="Cancel" class="btn btn-dark float cancel-btn"></a>
+                                <input type="submit" value="Create" class="btn btn-info float submit-btn">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Styles{
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+}

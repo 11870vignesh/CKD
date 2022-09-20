@@ -1,0 +1,43 @@
+﻿@model Models.model.BaseModel
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- JavaScript Bundle with Popper -->
+    <title>CKD Connect 3.0</title>
+
+    <!-- Style Links  -->
+    <partial name="_StyleLinks" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body id="body" class="sidebar-fixed">
+    <div class="container-scroller">
+        <!-- SideBar page -->
+        <partial name="_SideBar" />
+
+        <div class="page-body-wrapper">
+
+            <!-- NavBar page -->
+            <partial name="_NavBar" />
+
+            <div class="main-panel">
+                <div class="content-wrapper" id="content" style="background-color: #f4f6f9; padding-top: 2px;">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Footer page -->
+    <partial name="_Footer" />
+
+    <partial name="_JsLinks" />
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

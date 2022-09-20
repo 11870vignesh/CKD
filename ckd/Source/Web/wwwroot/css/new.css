@@ -1,0 +1,137 @@
+
+    
+      .text-muted,
+      .preview-list .preview-item .preview-item-content p .content-category {
+        color: rgb(255, 255, 255);
+      }
+
+      .content-wrapper {
+        background: #01222b;
+      }
+      /* .main-panel {
+        background: #0e3d4c;
+      } */
+      .sidebar {
+        background: #103543;
+        color: whitesmoke;
+      }
+      .navbar .navbar-menu-wrapper {
+        background: #343a40;
+      }
+      .sidebar .sidebar-brand-wrapper {
+        background: #00677f00;
+      }
+      .sidebar .nav .nav-item .nav-link .menu-title {
+        color: rgba(245, 245, 245, 0.808);
+      }
+      .card {
+        border: none;
+      }
+      .mb-0 {
+        font-size: 0.9em;
+      }
+      
+      .nav li {
+        height: 60px;
+      }
+      .notification {
+        color: rgba(245, 245, 245, 0.822);
+        width: 300px;
+      }
+      .preview-item-content {
+        width: 300px;
+      }
+      .time {
+        font-size: 13px;
+      }
+      .navbar .navbar-menu-wrapper .navbar-toggler:not(.navbar-toggler-right) {
+        font-size: 1.875rem;
+    }
+    .navbar-toggler:focus {
+      box-shadow: none;
+  }
+
+
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-menu.navbar-dropdown .dropdown-item {
+  background: #343a40;
+}
+
+
+.sidebar .sidebar-brand-wrapper .sidebar-brand img {
+  width: calc(290px - 120px);
+  max-width: 100%;
+  height: 38px;
+  margin: auto;
+  vertical-align: middle;
+  background: #343a40;
+}
+
+.sidebar .sidebar-brand-wrapper {
+  background: #343a40;
+}
+
+.sidebar {
+  background: #000e10;
+}
+
+.p-3{
+  background: #001921;
+}
+
+.card-body {
+  background-color: #343a40;
+  border-radius: 5px;
+  border-color: none;
+  color: white;
+}
+
+h3.count{
+  font-size: 1.55rem;
+  font-weight: 500;
+}
+
+
+.mdi-speedometer::before, 
+.mdi-playlist-play::before,
+.mdi-laptop::before,
+.mdi-table-large::before,
+.mdi-chart-bar::before,
+.mdi-contacts::before,
+.mdi-security::before
+{
+  color: #46d1ff;
+}
+
+
+footer{
+  color: #ffffffbd;
+  font-size: 12px;
+}
+
+.sidebar .nav .nav-item.active>.nav-link {
+  background: #000000;
+}
+
+.navbar .navbar-brand-wrapper {
+  background:#343a40;
+}
+
+.togglenew{
+  border: 0;
+  color: #fff;
+  height: 60px;
+  width: 48px;
+  background: #717070;
+  right: 100%;
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
+  position: absolute;
+}
+
+
+
+
+
+
+
+  

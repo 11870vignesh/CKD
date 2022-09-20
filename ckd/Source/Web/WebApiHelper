@@ -1,0 +1,7 @@
+namespace myapp.web;
+
+public class WebApiHelper
+{
+
+    
+}

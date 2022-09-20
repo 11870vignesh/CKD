@@ -1,0 +1,485 @@
+@model Models.model.VariantModel;
+<partial name="_MasterNavbar" />
+
+<div class="container">
+    <div class="maindiv">
+        <form action='@Url.Action("Index","Variant")' class="custom-centered" id="variantcreationform"
+            name="variantcreationform" method="post">
+            <div class="textcenter">
+                <h5 class="color headingsize">Variant Master</h5>
+            </div>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="form-group col-3">
+                        <input type="hidden" id="modal_id" name="Id" value="@Model.Id">
+                        <label for="BusinessId" class="required" style="color: white;">Business <span
+                                style="color: red;">
+                                *</span></label>
+                        <select onfocus='this.size=10;' onblur='this.size=1;' onchange='this.size=1; this.blur();'
+                            id="BusinessId" name="BusinessId" class="form-control dropdownheight">
+                            <option value="" selected="selected">Please Select Any Business</option>
+                            @foreach (var business in @Model.BusinessList)
+                            {
+                                if (@Model.BusinessId == business.Id)
+                                {
+                                    <option value="@business.Id" selected>@business.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@business.Id">@business.Name</option>
+                                }
+
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(Model => Model.BusinessId,"",new {@class ="text-danger"})
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="CountryId" class="required" style="color: white;">Country<span style="color: red;">
+                                *</span></label>
+                        <select onfocus='this.size=10;' onblur='this.size=1;' onchange='this.size=1; this.blur();'
+                            id="CountryId" name="CountryId" class="form-control dropdownheight">
+                            <option value="" selected="selected">Please Choose Country</option>
+                            @foreach (var country in @Model.CountryList)
+                            {
+                                if (@Model.CountryId == country.Id)
+                                {
+                                    <option value="@country.Id" selected>@country.CountryName</option>
+                                }
+                                else
+                                {
+                                    <option value="@country.Id">@country.CountryName</option>
+                                }
+
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(Model => Model.CountryId,"",new {@class ="text-danger"})
+                    </div>
+                    <!-- text input -->
+                    <div class="form-group col-3">
+                        <label for="VariantName" class="required" style="color: white;">Variant</label>
+                        <input type="text" id="VariantName" value="@Model.VariantName" name="VariantName"
+                            class="form-control" placeholder="">
+                        @Html.ValidationMessageFor(Model => Model.VariantName,"",new {@class =
+                        "text-danger"})
+                    </div>
+
+                    <!-- text input -->
+
+
+
+                    <!-- text input -->
+                    <br>
+                    <div class="form-group col-1" style="text-align: center;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-2">
+                    </div>
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-1 ">
+                        <button type="submit" class="btn btn-success"
+                            style="color: white;border-color:#007A93;background-color:#007A93">Submit</button>
+                    </div>
+
+                    <div class="col-1 ">
+
+                    </div>
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-2">
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </form>
+        @if (@Model.Id != null)
+        {
+            <div id="cancelbutton" class="container">
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-2">
+                    </div>
+                    <div class="col-4 text-center">
+                        @* <a href='@Url.Action("Index", "Business")'>
+
+                            </a> *@
+                        <button type=" button" onclick="EmptyId()" class="btn btn-secondary cancel">Cancel</button>
+                    </div>
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-2">
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        }
+        <br>
+        <br>
+
+
+        <div class="datatable paddingbottom">
+            @* <div class="textalignright">
+                <a href='@Url.Action("Create", "Business")'>
+                <button type=" button" id="createbutton" class="btn submitbutton noHover">Create New
+                Business</button>
+                </a>
+                </div> *@
+            <table id="BusinessDatatable" class="table table-bordered dt-responsive nowrap whitecolor" width="100%"
+                cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="text-center firstcolumn" style="">
+                            CreatedOn
+                        </th>
+                        <th class="text-center background tablehead Clearheadborder rightborder" style="">
+                            Business
+                        </th>
+                        <th class="text-center background tablehead Clearheadborder">Actions
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="backgroundbase displaynone" style=""></td>
+                        <td class="backgroundcolor Clearheadborder" id="backgroundcolor">
+                            <input type="text" onkeyup="CustomFilterFunction()"
+                                class="form-control textboxfilter Clearheadborder rightborder" id="businessinputfilter"
+                                name="businessinputfilter">
+                        </td>
+                        @* <td class="background" style="background-color: #216477;"></td> *@
+                        <td class="backgroundbase"></td>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="toasteralert">
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div class="toast-container position-absolute top-0 end-0 p-3">
+            <div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive"
+                aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Hello, world! This is a toast message.
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+@* "data": JSON.stringify($('#BusinessDatatable').DataTable().rows().data().toArray()), *@
+<script>
+    $(document).ready(function () {
+        //loadGrid();
+        //$('.dataTables_length').addClass('bs-select');
+        $('#BusinessDelete').hide();
+    });
+    $('#variantcreationform').validate({
+        rules: {
+            BusinessId: {
+                required: true,
+            },
+            CountryCode: {
+                required: true,
+            },
+            VariantName: {
+                required: true,
+                maxlength: 50,
+                minlength: 3
+            },
+        },
+        messages: {
+            BusinessId: {
+                required: "Please Choose Business",
+            },
+            CountryId: {
+                required: "Please enter Country",
+            },
+            VariantName: {
+                required: "Please enter Variant",
+                maxlength: "please enter below 50 characters",
+                minlength: "please enter above 3 characters"
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+    function loadGrid() {
+        $("#VariantDatatable").DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": true,
+            "orderCellsTop": true,
+            @* "pagingType": "first_last_numbers", *@
+            "ajax": {
+            "url": "/Variant/VariantData",
+            "type": "POST",
+            "datatype": 'json',
+            //deferLoading: 57,
+            "dataSrc": function (json) {
+                if (json.data == null) {
+                    return [];
+                }
+                return json.data;
+            },
+
+        },
+            "language": {
+            "emptyTable": "No data available in table", // 
+            "loadingRecords": "Please wait .. ", // default Loading...
+            "zeroRecords": "No matching records found",
+            "processing": '<i class="fa fa-spinner fa-spin datatablespinner"></i>'
+        },
+            "columns": [
+            {
+                "data": "createdOn", "name": "CreatedOn", "autoWidth": true,
+                "render": function (data) {
+                    if (data != null) {
+                        var date = new Date(data);
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "/" + (month.toString().length > 1 ? month : "0" + month) + "/" + date.getFullYear();
+                    }
+                    else {
+                        return ("");
+                    }
+
+                }
+            },
+            { "data": "name", "name": "Business", "autoWidth": true },
+            {
+                "mRender": function (data, type, full) {
+                    return '<a href="@Url.Action("GetById","Business")?Id=' + full.id + '" ><i  class="fa fa-pencil-square iconbasecolor"></i ></a>' + '<a ><i  class="fa fa-trash" onclick="Delete(' + full.id + ')" style="font-size:20px;color:#CC0033 ;padding-left:30px;"></i></a>'
+                }
+            },
+        ],
+            'columnDefs': [
+            {
+                'targets': [2], // column index (start from 0)
+                'orderable': false,
+                // set orderable false for selected columns
+            },
+            {
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }
+        ]
+
+        });
+    }
+    function CustomFilterFunction() {
+        dataTable = $('#BusinessDatatable').DataTable();
+
+        dataTable.columns(0).search($('#businessinputfilter').val());
+        dataTable.columns(1).search($('#businesscreatedonfilter').val());
+        dataTable.draw();
+    }
+    function EmptyId() {
+        $("#modal_id").val('');
+        $("#Name").val('');
+        $("#cancelbutton").hide();
+        window.location.href = "../Business/Index";
+    }
+
+    @* $('#btn-submit').on('click', function (e) {
+            e.preventDefault();
+            var form = $(this).parents('form');
+            swal({
+            title: "Are you sure?",
+            text: "You Want to Delete!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+            }, function (isConfirm) {
+            if (isConfirm) form.submit();
+            });
+            }); *@
+</script>
+<script>
+
+</script>
+}
+<script>
+    if (@Model.StatusCode == 200) {
+        swal({
+            title: "Success!",
+            text: "Data saved Successfully!",
+            icon: "success",
+            button: "ok",
+        })
+    }
+    else if (@Model.StatusCode == 500) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            button: "ok",
+        })
+    }
+</script>
+<script type="text/javascript">
+    function Delete(value) {
+        $("#delete_modal_id").val(value);
+        $("#flag").val(1);
+        $('#BusinessDelete').show();
+    }
+    function EmptyFlag() {
+        $("#flag").val(0);
+        $('#BusinessDelete').hide();
+    }
+    @* href="@Url.Action("GetBusiness","Business")?Id=' + full.id + '" *@
+</script>
+<form action='@Url.Action("DeleteBusiness","Business")' id="DeleteForm" method="post">
+    @* <div class="modal show" id="BusinessDelete" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+        </div>
+        </div>
+        </div> *@
+    <div class="modal" id="BusinessDelete" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header tablehead">
+                    <h5 style="text-align: right;" class="modal-title" id="staticBackdropLabel">
+                        Delete Business
+                    </h5>
+                    <button type="button" onclick="EmptyFlag()" class="close" data-dismiss="modal">
+                        &times;</button>
+                </div>
+                <div class="modal-body" id="modelBody">
+                    <div class="row ">
+                        <input type="hidden" id="flag" name="flag">
+                        <input type="hidden" id="delete_modal_id" name="Id">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <h5>want to delete the Business?</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <!-- text input -->
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success modaldeletebutton">yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+
+        function Edit(value) {
+            //var data = value.serialize();
+            //console.log(data);
+            //alert(data);
+            $.ajax({
+                type: 'POST',
+                url: '/Business/GetById',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+                data: { 'Id': value },
+                success: function (result) {
+                    //alert('Successfully received Data ');
+                    //console.log(result);
+                    $("#Name").val(result.name);
+                    $("#modal_id").val(result.id);
+                    $('html, body').animate({ scrollTop: 0 }, 'fast');
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+        }
+</script>
+@* <form action='@Url.Action("Insert","Business")' id="loginform" method="post">
+    <div class="modal fade" id="BusinessUpdate" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+    <div class="modal-header" style="background-color: #216477;color:white;">
+    <h5 class="modal-title" id="staticBackdropLabel">
+    Update Business
+    </h5>
+    </div>
+    <div class="modal-body" id="modelBody">
+    <div class="row">
+    <input type="hidden" id="modal_id" name="id">
+    <div class="col-sm-2">
+    <!-- text input -->
+    </div>
+    <div class="col-sm-4">
+    <!-- text input -->
+    <div class="form-group">
+    <label for="business_name" class="required">Name</label>
+    <input type="text" id="modal_business_name" name="Name" class="form-control"
+    placeholder="">
+    </div>
+    </div>
+    <div class="col-sm-2">
+    <!-- text input -->
+    <br>
+    <div class="form-group">
+    <button type="submit" class="btn btn-success modaldeletebutton">Update</button>
+    </div>
+    </div>
+    <div class="col-sm-4">
+    <!-- text input -->
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </form> *@
+<script>
+    if (@Model.StatusCode == 200) {
+        $("#myToast").toast("show");
+    }
+</script>
+<script>
+
+
+
+
+</script>

@@ -1,0 +1,12 @@
+.vscode/launch.json
+.vscode/settings.json
+**/.vs/*
+**/.vscode/*
+**/Debug/*
+**/Release/*
+**/bin/*
+**/obj/*
+*.obj
+*.sln
+*.gitkeep
+

@@ -1,0 +1,51 @@
+/* Forms css */
+.error {
+    color: red;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #4b5564;
+}
+.form-select{
+    color: #4b5564;
+}
+.col {
+    color: #343a40;
+}
+
+a.breadcrumb{
+    color:#343a40;
+}
+ .form-heading{
+    color:#000000cc;
+    padding-bottom:15px;
+    padding-top: 0px;
+ }
+ #UserSignup{
+    font-size: 0.875rem;
+ }
+
+
+.cancel-btn{
+    background-color:rgb(78, 113, 113);
+    border:none;
+}
+.submit-btn{
+    background-color:#343a40;
+    border:none;
+    margin-left:10px;
+}
+
+.btn-info:hover{
+    background-color:#343a40;
+}
+
+.btn-dark:hover{
+    background-color:rgb(78, 113, 113);
+}
+
+/* .card .card-body{
+    background-color: #fff;
+} */
+
+
